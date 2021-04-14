@@ -35,7 +35,7 @@ it("responds correctly to status check command", function(){
 let message = new Message('Test message with two commands', commands);
 let rover = new Rover(98382);    
 let response = rover.receiveMessage(message);
-expect(response.results[1].roverStatus.mode).toEqual('NORMAL');
+expect(response.results[1].roverStatus.mode).toEqual('LOW_POWER');
 expect(response.results[1].roverStatus.position).toEqual(98382);
 expect(response.results[1].roverStatus.generatorWatts).toEqual(110);
 });
@@ -62,6 +62,6 @@ it("responds with position for move command", function(){
 let message = new Message('Test message with two commands', commands);
 let rover = new Rover(98382);    
 let response = rover.receiveMessage(message);
-expect(rover.position).toEqual(1259);
+expect(response.results[0].roverStatus.position).toEqual(1259);
 });
 });
